@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments::head(title='Pizza\'s')"></head>
+	<body th:class="${kleur}">
+		<nav th:replace="fragments::menu"></nav>
+		<h1>Pizza's</h1>
+		<ul class="zebra">
+			<li th:each="pizza:${pizzas}" th:object="${pizza}">
+				<span th:text="*{naam}"></span>  &euro;
+				<span th:text="*{prijs}"></span>
+				<span th:if="*{pikant}"> pikant</span>
+				<a th:href="@{/pizzas/{id}(id=*{id})}">detail</a>
+			</li>
+		</ul>
+	</body>
+</html>
