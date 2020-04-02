@@ -9,5 +9,4 @@ class LuigiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
