@@ -1,3 +1,4 @@
+<!-- @Author Andre Komdeur -->
 <nav th:fragment="menu" xmlns:th='http://www.thymeleaf.org'>
 	<ul>
 		<li><a th:href="@{/}">Welkom</a></li>
@@ -5,6 +6,10 @@
 		<li><a th:href="@{/os}">OS</a></li>
 		<li><a th:href="@{/kleuren}">Kleur</a></li>
 		<li><a th:href="@{/pizzas/prijzen}">Prijzen</a></li>
+		<li><a th:href="@{/pizzas/vantotprijs/form}">Van tot prijs</a></li>
+		<li><a th:href="@{/pizzas/toevoegen/form}">Toevoegen</a></li>
+		<li><a th:href="@{/identificatie}">Identificatie</a></li>
+		<li><a th:href="@{/mandje}">Mandje</a></li>
 	</ul>
 </nav>
 <head th:fragment="head(title)" xmlns:th='http://www.thymeleaf.org'>

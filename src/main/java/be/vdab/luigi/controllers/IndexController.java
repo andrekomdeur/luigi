@@ -1,7 +1,7 @@
 package be.vdab.luigi.controllers;
-
 import be.vdab.luigi.domain.Adres;
 import be.vdab.luigi.domain.Persoon;
+import be.vdab.luigi.sessions.Identificatie;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/")
 class IndexController {
     private final AtomicInteger aantalKeerBekeken = new AtomicInteger();
+    private final Identificatie identificatie;
+
+    public IndexController(Identificatie identificatie) {
+        this.identificatie = identificatie;
+    }
+
     private String boodschap() {
         int uur = LocalTime.now().getHour();
         if (uur < 12) {
@@ -26,8 +32,8 @@ class IndexController {
         }
         return "avond";
     }
-    @GetMapping
 
+    @GetMapping
     public ModelAndView index(@CookieValue(name = "kleur", required = false) String kleur) {
         ModelAndView modelAndView = new ModelAndView(
                 "index",
@@ -50,6 +56,7 @@ class IndexController {
                         "Oudenaarde")));
         modelAndView.addObject("aantalKeerBekeken", aantalKeerBekeken.incrementAndGet());
         modelAndView.addObject("kleur", kleur);
+        modelAndView.addObject("identificatie", identificatie.getEmailAdres());
         return modelAndView;
     }
 }

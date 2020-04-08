@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("kleuren")
-class kleurController {
+class KleurController {
     private static final int EEN_JAAR_IN_SECONDEN = 31_536_000;
     @GetMapping
     public ModelAndView toonPagina(

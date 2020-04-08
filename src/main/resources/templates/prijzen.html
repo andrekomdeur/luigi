@@ -12,7 +12,7 @@
 		</ul>
 		<h2 th:if="${prijs} != null">Pizzas met een prijs van
 			<span th:text="${prijs}"></span></h2>
-		<ul th:if="${pizzas} != null">
+		<ul th:unless="${#lists.isEmpty(pizzas)}">
 			<li th:each="pizza:${pizzas}" th:text="${pizza.naam}"></li>
 		</ul>
 	</body>

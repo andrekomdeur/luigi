@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Van tot prijs')"></head>
+<body th:class="${kleur}">
+<nav th:replace="fragments::menu"></nav>
+<h1>Van tot prijs</h1>
+<form th:object="${vanTotPrijsForm}"
+      method="get" th:action="@{/pizzas/vantotprijs}">
+    <label>Van:<span th:errors="*{van}"></span>
+        <input th:field="*{van}" autofocus type="number" required min="0"></label>
+    <label>Tot:<span th:errors="*{tot}"></span>
+        <input th:field="*{tot}" type="number" required min="0"></label>
+    <button>Zoeken</button>
+</form>
+
+<h2 th:unless="${#lists.isEmpty(pizzas)}"> Pizzas:
+</h2>
+<h2 th:if="${#lists.isEmpty(pizzas)}"> Geen pizzas gevonden!
+</h2>
+<ul th:unless="${#lists.isEmpty(pizzas)}">
+    <li th:each="pizza:${pizzas}" th:object="${pizza}">
+        <span th:text="*{naam}"></span> €
+        <span th:text="*{prijs}"></span>
+    </li>
+</ul>
+</body>
+</html>

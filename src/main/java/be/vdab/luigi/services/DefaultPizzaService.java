@@ -39,7 +39,8 @@ public class DefaultPizzaService  implements PizzaService {
     @Override
     @Transactional(readOnly = true)
     public List<Pizza> findByPrijsBetween(BigDecimal van, BigDecimal tot) {
-        return pizzaRepository.findByPrijsBetween(van, tot);
+        List<Pizza> list = pizzaRepository.findByPrijsBetween(van, tot);
+        return list;
     }
     @Override
     @Transactional(readOnly = true)
