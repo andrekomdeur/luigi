@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- @Author Andre Komdeur -->
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments::head(title='Raad de pizza')"></head>
+	<body th:class="${kleur}" th:object="${raadDePizza}">
+		<nav th:replace="fragments::menu"></nav>
+		<h1>Raad de pizza</h1>
+		<div>Te raden pizza:<span th:text="*{woord}"></span>
+			<img th:src="@{/images/{ind}.png(ind=*{pogingen})}" alt="galg">
+		</div>
+		<h2 th:if="*{isGewonnen()}">U heeft gewonnen.</h2>
+		<h2 th:if="*{isVerloren()}">U heeft verloren.
+			De pizza was
+			<span th:text="${raadDePizza.getTeRadenPizza()}"></span></h2>
+		<form th:object="${RadenForm}" th:action="@{/raaddepizza/raden}" method="post">
+			<label>letter:<span th:errors="*{letter}"></span>
+				<input th:field="*{letter}"
+						 oninput="this.value=this.value.toLowerCase()"
+				    	autofocus required size="1" maxlength="1"></label>
+			<button>Raden</button>
+		</form>
+		<form th:action="@{/raaddepizza/nieuwspel}" method="post">
+			<button>Nieuw spel</button>
+		</form>
+	</body>
+</html>
+

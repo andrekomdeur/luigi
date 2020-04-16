@@ -6,13 +6,15 @@
 		<h1>Pizza Luigi</h1>
 		<img th:src="@{/images/luigi.jpg}" alt="pizza" class="fullwidth">
 		<h2>De zaakvoerder</h2>
-		<dl>
+		<dl th:object="${zaakvoerder}">
 			<dt>Naam</dt>
-			<dd th:text="${zaakvoerder.naam}"></dd>
+			<dd th:text="*{naam}"></dd>
 			<dt>Aantal kinderen</dt>
-			<dd th:text="${zaakvoerder.aantalKinderen}"></dd>
+			<dd th:text="*{aantalKinderen}"></dd>
 			<dt>Gehuwd</dt>
-			<dd th:text="${zaakvoerder.gehuwd} ? 'Ja' : 'Nee'"></dd>
+			<dd th:text="*{gehuwd} ? 'Ja' : 'Nee'"></dd>
+			<dt>Geboorte</dt>
+			<dd th:text="*{{geboorte}}"></dd>
 		</dl>
 		<p>Deze pagina werd <span th:text="${aantalKeerBekeken}"></span>
 			keer bekeken.</p>

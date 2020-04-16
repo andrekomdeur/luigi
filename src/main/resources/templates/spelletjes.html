@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- @Author Andre Komdeur -->
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments::head(title='Spelletjes')"></head>
+	<body th:class="${kleur}">
+		<nav th:replace="fragments::menu"></nav>
+		<h1>Spelletjes</h1>
+		<ul class="zebra">
+			<li th:each="spelletje:${spelletjes}" th:object="${spelletje}">
+				<a th:href="@{/{nm}/show(nm=*{lowNaam})}">
+					<span th:text="*{naam}"></span>
+				</a>
+			</li>
+		</ul>
+	</body>
+</html>
